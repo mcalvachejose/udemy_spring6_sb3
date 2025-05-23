@@ -1,0 +1,61 @@
+package com.prueba.vscode.springvscode.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.prueba.vscode.springvscode.models.User;
+
+@Controller
+public class UserController {
+
+    @GetMapping("/details")
+    public String getDetails() {
+        return "details";
+    }
+
+    @GetMapping("/details2")
+    public String getDetails2(Model model) {
+        model.addAttribute("title", "Hola Ramon");
+        model.addAttribute("name", "Ortega");
+        model.addAttribute("lastname", "Hernandez");
+        return "details2";
+    }
+    
+    @GetMapping("/details3")
+    public String getDetails3(Map<String, Object> model) {
+        model.put("title", "Mapa Ramon");
+        model.put("name", "Ortega");
+        model.put("lastname", "Hernandez");
+        return "details2";
+    }
+
+    @RequestMapping(path = "/details4", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getDetails4() {
+        Map<String, Object> model = new HashMap<>();
+        model.put("title", "Controller Json");
+        model.put("name", "Ortega");
+        model.put("lastname", "Hernandez");
+        return model;
+    }
+
+    @GetMapping("/details5")
+    public String details5(Model model) {
+        model.addAttribute("title", "Personas");
+        User user = new User ("Juan", "Albarez");
+        model.addAttribute("titulo1", "Persona 1");
+        model.addAttribute("user1", user);
+        User user2 = new User ("Simon", "Del Cano");
+        model.addAttribute("titulo2", "Persona 2");
+        model.addAttribute("user2", user2);
+
+        return "details2_user";
+    }
+}
