@@ -16,6 +16,9 @@ public class User {
         this.mail = mail;
     }
 
+    public User() {
+    }
+
     public String getName() {
         return name;
     }
