@@ -1,11 +1,14 @@
 package com.prueba.vscode.springvscode.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prueba.vscode.springvscode.models.User;
+import com.prueba.vscode.springvscode.models.dto.UserDto;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +27,9 @@ public class UserRestController {
         return model;
     }
     
-    @GetMapping("/details8")
-    public Map<String, Object> details2() {
-        User user = new User ("Juan", "Albarez");
+    @GetMapping("/details1")
+    public Map<String, Object> details1() {
+        User user = new User ("Juan", "Albarez", "pe@com");
         Map<String, Object> model = new HashMap<>();
         model.put("title", "Titulo del Mensaje");
         model.put("user", user);
@@ -34,18 +37,28 @@ public class UserRestController {
         return model;
     }
 
-      @GetMapping("/details9")
-    public String details9(Model model) {
-        model.addAttribute("title", "Personas");
-        User user = new User ("Juan", "Albarez");
-        model.addAttribute("titulo1", "Persona 1");
-        model.addAttribute("user1", user);
-        model.addAttribute("user1", user);
-        User user2 = new User ("Simon", "Del Cano");
-        model.addAttribute("titulo2", "Persona 2");
-        model.addAttribute("user2", user2);
-        model.addAttribute("user2", user2);
+    @GetMapping("/details-dto")
+    public UserDto detailsDto() {
 
-        return "details2_user";
+        UserDto userDto = new UserDto ("Romina", new User("UserPrueba", "LastName Prueba", "pe@com"));
+      
+        return userDto;
+    }
+
+    @GetMapping("/list-user")
+    public List<UserDto> listUser() {
+
+        UserDto userDto = new UserDto ("Romina", new User("UserPrueba", "LastName Prueba", "pe@com"));
+        UserDto userDto1 = new UserDto ("Demian", new User("UserPrueba1", "LastName Prueba1", "pe@com"));
+        UserDto userDto2 = new UserDto ("Daison", new User("UserPrueba2", "LastName Prueba2", "pe@com"));
+        UserDto userDto3 = new UserDto ("Dereck", new User("UserPrueba3", "LastName Prueba3", "pe@com"));
+       
+        List<UserDto> userList = Arrays.asList(userDto, userDto1, userDto2, userDto3);
+        // List<UserDto> userList = new ArrayList<>();
+        // userList.add(userDto);
+        // userList.add(userDto1);
+        // userList.add(userDto2);
+        // userList.add(userDto3);
+        return userList;
     }
 }

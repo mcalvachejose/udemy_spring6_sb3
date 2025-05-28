@@ -6,11 +6,15 @@
     <title th:text="${title}">Document</title>
 </head>
 <body>
-    <h1 th:text="${titulo1}"></h1>
-    <h2 th:text="${user1.name}"></h2>
-    <p th:text="${user1.lastName}"></p>
-    <h1 th:text="${titulo2}"></h1>
-    <h2 th:text="${user2.name}"></h2>
-    <p th:text="${user2.lastName}"></p>
+    <ul>
+        <li th:text="${titulo1}"></li>
+        <li th:text="${user1.name}"></li>
+        <li th:text="${user1.lastName}"></li>
+        <li th:text="${titulo2}"></li>
+        <li th:text="${user2.name}"></li>
+        <li th:if="${user2.lastName}" th:text="${user2.lastName}"></li>
+        <li th:if="${not (user2.lastName != null)}" th:text="${'NO TIENE mail'}"></li>
+        <li th:if="${user2.lastName == null}" th:text="${'NO TIENE mail'}"></li>
+    </ul>
 </body>
 </html>
