@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/details2")
     public String getDetails2(Model model) {
-        model.addAttribute("title", "Hola Ramon");
+        model.addAttribute("title", "TITULO D2");
         model.addAttribute("name", "Ortega");
         model.addAttribute("lastname", "Hernandez");
         return "details2";

@@ -8,5 +8,17 @@
 <body>
     <h1 th:text="${name}"></h1>
     <p th:text="${lastname}"></p>
+
+    <a th:href="@{/list}">Ver listado</a>
+    <br>
+    <a th:href="@{'/api/params/foo?mensaje=' + ${title}}">Ver params</a>
+    <br>
+    <a th:href="@{/api/params/foo(mensaje='Forma 2')}">Ver params FORMA 2</a>
+    <br>
+    <a th:href="@{/api/params/bar(text='Forma 2', code=1266)}">Ver BAR</a>
+    <br>
+    <a th:href="@{/api/var/baz/algun mensaje}">Ver path variable</a>
+    <br>
+    <a th:href="@{'/api/var/baz/' + 'concatenado con texto'}">Ver path variable 2</a>
 </body>
 </html>
