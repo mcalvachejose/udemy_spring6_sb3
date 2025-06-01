@@ -14,17 +14,15 @@ import com.udemy.inyecciondependencias.springboot_di.services.ProductService;
 @RequestMapping("/api")
 public class ProductController {
 
-   // private ProductService service = new ProductService();
+    private ProductService service = new ProductService();
 
     @GetMapping("/list")
     public List<Product> list() {
-        ProductService service = new ProductService();
         return service.findAll();
     }
 
     @GetMapping("/{id}")
     public Product findById(@PathVariable Long id) {
-        ProductService service = new ProductService();
         return service.findeById(id);
     }
 }
