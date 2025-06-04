@@ -23,9 +23,10 @@ public class ProductServiceImpl implements ProductService{
         return repository.findAll().stream().map(p -> {
             Double priceImpuesto = p.getPrice()*1.25d;
             // Product newProd = new Product(p.getId(),p.getName(),priceImpuesto.longValue());
-            Product newProd = (Product) p.clone();
-            newProd.setPrice(priceImpuesto.longValue());
-            return newProd;
+            //Product newProd = (Product) p.clone();
+            //newProd.setPrice(priceImpuesto.longValue());
+            p.setPrice(priceImpuesto.longValue());
+            return p;
         }).collect(Collectors.toList());
     }
 
@@ -35,7 +36,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Autowired
-    public void setRepository(@Qualifier("productRepositoryImplFoo") ProductRepository repository) {
+    public void setRepository(@Qualifier("productRepositoryImpl") ProductRepository repository) {
          this.repository = repository;
     }
 }
