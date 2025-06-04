@@ -3,13 +3,12 @@ package com.udemy.inyecciondependencias.springboot_di.repositories;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.udemy.inyecciondependencias.springboot_di.models.Product;
 
 @Repository
-@Primary
+
 public class ProductRepositoryImplFoo implements ProductRepository{
 
     List<Product> data;

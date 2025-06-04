@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Xbox 360",
+        "price": 300
+    },
+    {
+        "id": 2,
+        "name": "Play 3",
+        "price": 350
+    },
+    {
+        "id": 3,
+        "name": "Wii",
+        "price": 275
+    },
+    {
+        "id": 4,
+        "name": "PSP",
+        "price": 225
+    }
+]
