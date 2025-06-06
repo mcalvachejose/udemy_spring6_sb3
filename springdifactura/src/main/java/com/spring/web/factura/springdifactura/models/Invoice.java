@@ -3,8 +3,12 @@ package com.spring.web.factura.springdifactura.models;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
 public class Invoice {
@@ -16,7 +20,27 @@ public class Invoice {
     private String description;
 
     @Autowired
+    @Qualifier("itemsInvoice")
     private List<Item> items;
+
+    public Invoice() {
+        System.out.println("Costructor Invoice START");
+        System.out.println("Cliete Cont " + client);
+        System.out.println("Description Cont " + description);
+        System.out.println("----------------");
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Creando el componente de la factura");
+        System.out.println("Cliete Cont " + client);
+        System.out.println("Description Cont " + description);
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println("Destruyendo Invoice " + this);
+    }
 
     public Client getClient() {
         return client;
