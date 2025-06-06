@@ -2,13 +2,11 @@ package com.spring.web.factura.springdifactura.models;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Component
-@SessionScope
-@JsonIgnoreProperties({"targetSource", "advisors"})
+@RequestScope
+//@JsonIgnoreProperties({"targetSource", "advisors"})
 public class Client {
 
     @Value("${client.name}")
