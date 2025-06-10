@@ -29,9 +29,9 @@ public class AppController {
 
     @GetMapping("/{id}")
     public User find(@PathVariable Long id) {
-        User user = userService.find(id);
-        if (user == null)
-        throw new UserNotFoundException("Usuario no existe");
+        User user = userService.find(id).orElseThrow(()-> new UserNotFoundException("Usuario no existe"));
+        // if (user == null)
+        // throw new UserNotFoundException("Usuario no existe");
         System.out.println(user.getLastname());
         return user;
     }
