@@ -4,23 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.jose.springboot.error.springboot_error.models.Role;
 import com.jose.springboot.error.springboot_error.models.User;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private List<User> users;
-
-    public UserServiceImpl() {
-        this.users = new ArrayList<>();
-        users.add(new User(1L, "Juan", "Dominguez", new Role("Carpintero")));
-        users.add(new User(2L, "Hector", "Garcia"));
-        users.add(new User(3L, "Ana", "Mangasio"));
-        users.add(new User(4L, "Filomena", "Ochoa"));
-    }
 
     @Override
     public Optional<User> find(Long id) {
