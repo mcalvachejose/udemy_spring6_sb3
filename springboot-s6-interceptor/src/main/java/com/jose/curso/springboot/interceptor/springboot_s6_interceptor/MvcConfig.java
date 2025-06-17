@@ -14,9 +14,14 @@ public class MvcConfig implements WebMvcConfigurer{
     @Qualifier("timeInterceptor")
     private HandlerInterceptor timeInterceptor;
 
+    @Autowired
+    @Qualifier("calendarInterceptor")
+    private HandlerInterceptor calendarInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(timeInterceptor).addPathPatterns("/app/bar", "/app/foo");
+        registry.addInterceptor(calendarInterceptor).addPathPatterns("/horario/**");
         //registry.addInterceptor(timeInterceptor).excludePathPatterns("/app/bar", "/app/foo");
     }
 
